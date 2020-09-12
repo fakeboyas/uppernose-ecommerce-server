@@ -12,6 +12,12 @@ app.get("/", (req, res) => {
   res.send("Welcome to rest api");
 });
 
+app.get("*", (req, res) => {
+  res.send("404 Page Not Found");
+});
+
+app.get("/product", require("./routes/Product"));
+
 if (db) {
   app.listen(PORT, () => {
     console.log(`server running on ${PORT}`);
