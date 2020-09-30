@@ -16,7 +16,7 @@ app.get("*", (req, res) => {
   res.send("404 Page Not Found");
 });
 
-app.get("/product", require("./routes/Product"));
+app.use("/product", require("./routes/Product"));
 
 if (db) {
   app.listen(PORT, () => {
