@@ -27,17 +27,20 @@ module.exports = {
   updateProduct: async (req, res) => {
     const { id } = req.params;
     try {
-      const result = await Product.findByIdAndUpdate(id, {
-        ...req.body,
-        photo: {
-          data: req.file.buffer,
-          contentType: req.file.mimetype,
-        },
-      });
+        const results = await Product.findByIdAndUpdate(id, {
+            $set: {
+                ...req.body,
+            },
+        });
+
+        res.send({
+            message: `Update data succcess`,
+            results: results,
+        });
     } catch (error) {
-      res.send(error);
+        res.send(error);
     }
-  },
+},
 
   //delete produk
   deleteProduct: async (req, res) => {

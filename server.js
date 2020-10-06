@@ -12,9 +12,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to rest api");
 });
 
-app.get("*", (req, res) => {
-  res.send("404 Page Not Found");
-});
 
 app.use("/product", require("./routes/Product"));
 
